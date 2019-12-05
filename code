@@ -1,0 +1,303 @@
+cd c:\New_data
+insheet using workhours.csv,clear
+rename v1 id
+rename v2 y1998
+rename v3 y1999
+rename v4 y2000
+rename v5 y2001
+rename v6 y2002
+rename v7 y2003
+rename v8 y2004
+rename v9 y2005
+rename v10 y2006
+rename v11 y2007
+rename v12 y2008
+rename v13 y2009
+rename v14 y2010
+rename v15 y2011
+rename v16 y2012
+rename v17 y2013
+rename v18 y2014
+rename v19 y2015
+rename v20 y2016
+replace y1998=0 if y1998==.
+replace y1999=0 if y1999==.
+replace y2000=0 if y2000==.
+replace y2001=0 if y2001==.
+reshape long y, i(id)j(year)
+rename y workhours
+save workhours.dta,replace
+insheet using unemployment.csv,clear
+rename v1 id
+rename v2 y1998
+rename v3 y1999
+rename v4 y2000
+rename v5 y2001
+rename v6 y2002
+rename v7 y2003
+rename v8 y2004
+rename v9 y2005
+rename v10 y2006
+rename v11 y2007
+rename v12 y2008
+rename v13 y2009
+rename v14 y2010
+rename v15 y2011
+rename v16 y2012
+rename v17 y2013
+
+rename v18 y2014
+rename v19 y2015
+rename v20 y2016
+replace y1998=0 if y1998==.
+replace y1999=0 if y1999==.
+replace y2000=0 if y2000==.
+replace y2001=0 if y2001==.
+reshape long y, i(id)j(year)
+rename y unemployment
+save unemployment.dta,replace
+insheet using income.csv,clear
+rename v1 id
+rename v2 y1998
+rename v3 y1999
+rename v4 y2000
+rename v5 y2001
+rename v6 y2002
+rename v7 y2003
+rename v8 y2004
+rename v9 y2005
+rename v10 y2006
+rename v11 y2007
+rename v12 y2008
+rename v13 y2009
+rename v14 y2010
+rename v15 y2011
+rename v16 y2012
+rename v17 y2013
+rename v18 y2014
+rename v19 y2015
+rename v20 y2016
+replace y1998=0 if y1998==.
+replace y1999=0 if y1999==.
+reshape long y, i(id)j(year)
+rename y income
+save income.dta,replace
+insheet using crime.csv,clear
+rename v1 id
+rename v2 y1998
+rename v3 y1999
+rename v4 y2000
+rename v5 y2001
+rename v6 y2002
+rename v7 y2003
+rename v8 y2004
+rename v9 y2005
+rename v10 y2006
+
+rename v11 y2007
+rename v12 y2008
+rename v13 y2009
+rename v14 y2010
+rename v15 y2011
+rename v16 y2012
+rename v17 y2013
+rename v18 y2014
+rename v19 y2015
+rename v20 y2016
+replace y1998=0 if y1998==.
+reshape long y, i(id)j(year)
+rename y crime
+save crime.dta,replace
+insheet using marriage.csv,clear
+rename v1 id
+rename v2 y1998
+rename v3 y1999
+rename v4 y2000
+rename v5 y2001
+rename v6 y2002
+rename v7 y2003
+rename v8 y2004
+rename v9 y2005
+rename v10 y2006
+rename v11 y2007
+rename v12 y2008
+rename v13 y2009
+rename v14 y2010
+rename v15 y2011
+rename v16 y2012
+rename v17 y2013
+rename v18 y2014
+rename v19 y2015
+rename v20 y2016
+reshape long y, i(id)j(year)
+rename y marriage
+save marriage.dta,replace
+insheet using Dependency_ratio.csv,clear
+rename v1 id
+rename v2 y1998
+rename v3 y1999
+rename v4 y2000
+rename v5 y2001
+rename v6 y2002
+rename v7 y2003
+rename v8 y2004
+
+rename v9 y2005
+rename v10 y2006
+rename v11 y2007
+rename v12 y2008
+rename v13 y2009
+rename v14 y2010
+rename v15 y2011
+rename v16 y2012
+rename v17 y2013
+rename v18 y2014
+rename v19 y2015
+rename v20 y2016
+reshape long y, i(id)j(year)
+rename y Dependency_ratio
+save Dependency_ratio.dta,replace
+insheet using Civil_Service.csv,clear
+rename v1 id
+rename v2 y1998
+rename v3 y1999
+rename v4 y2000
+rename v5 y2001
+rename v6 y2002
+rename v7 y2003
+rename v8 y2004
+rename v9 y2005
+rename v10 y2006
+rename v11 y2007
+rename v12 y2008
+rename v13 y2009
+rename v14 y2010
+rename v15 y2011
+rename v16 y2012
+rename v17 y2013
+rename v18 y2014
+rename v19 y2015
+rename v20 y2016
+reshape long y, i(id)j(year)
+rename y Civil_Service
+save Civil_Service.dta,replace
+insheet using birth.csv,clear
+rename v1 id
+rename v2 y1998
+rename v3 y1999
+rename v4 y2000
+rename v5 y2001
+rename v6 y2002
+rename v7 y2003
+
+rename v8 y2004
+rename v9 y2005
+rename v10 y2006
+rename v11 y2007
+rename v12 y2008
+rename v13 y2009
+rename v14 y2010
+rename v15 y2011
+rename v16 y2012
+rename v17 y2013
+rename v18 y2014
+rename v19 y2015
+rename v20 y2016
+reshape long y, i(id)j(year)
+rename y birth
+save birth.dta,replace
+merge 1:1 id year using Civil_Service
+tab _merge
+drop _merge
+merge 1:1 id year using Dependency_ratio
+tab _merge
+drop _merge
+merge 1:1 id year using marriage
+tab _merge
+drop _merge
+merge 1:1 id year using unemployment
+tab _merge
+drop _merge
+merge 1:1 id year using workhours
+tab _merge
+drop _merge
+merge 1:1 id year using income
+tab _merge
+drop _merge
+merge 1:1 id year using crime
+tab _merge
+drop _merge
+sort id year
+encode id,gen(nID)
+drop id
+rename nID id
+sort id year
+by id: gen lag1 = marriage[_n-1]
+rename lag1 marriage_lag1
+drop marriage
+gen ddragon_year=0
+replace ddragon_year=1 if year==2000
+
+replace ddragon_year=1 if year==2012
+corr birth workhours marriage_lag1 unemployment Dependency_ratio Civil_Service
+income ddragon_year crime
+reg birth marriage_lag1 unemployment Dependency_ratio ddragon_year crime
+tsset id year
+xtreg birth marriage_lag1 unemployment Dependency_ratio ddragon_year crime,fe
+est store fixed
+xtreg birth marriage_lag1 unemployment Dependency_ratio ddragon_year crime,re
+hausman fixed
+xttest0
+sum
+scatter birth unemployment
+scatter birth marriage_lag1
+tabstat birth marriage_lag1, by(year) stat(mean sd)
+scatter birth crime
+scatter birth Dependency_ratio
+scatter birth ddragon_year
+scatter birth year
+cor birth unemployment
+cor birth marriage_lag1
+cor birth crime
+cor birth Dependency_ratio
+cor birth ddragon_year
+xtdes
+corr birth marriage_lag1 unemployment Dependency_ratio ddragon_year crime
+tabstat id birth,by(year) stat(mean sd)
+
+安裝與使用hireg指令
+net describe hireg, from(http://fmwww.bc.edu/RePEc/bocode/h)
+net install hireg
+hireg birth (unemployment marriage Dependency_ratio Civil_Service
+income)(workhours marriage Dependency_ratio Civil_Service income) (workhours
+unemployment Dependency_ratio Civil_Service income) (workhours unemployment
+marriage Civil_Service income)(workhours unemployment marriage
+Dependency_ratio income)(workhours unemployment marriage Dependency_ratio
+Civil_Service) ,nomiss
+hireg birth (unemployment marriage Dependency_ratio Civil_Service
+income)(workhours marriage Dependency_ratio Civil_Service income) (workhours
+unemployment Dependency_ratio Civil_Service income) (workhours unemployment
+marriage Civil_Service income)(workhours unemployment marriage
+Dependency_ratio income)(workhours unemployment marriage Dependency_ratio
+Civil_Service)
+hireg birth (workhours)(workhours unemployment) (workhours unemployment
+marriage) (workhours unemployment marriage Dependency_ratio)(workhours
+unemployment marriage Dependency_ratio Civil_Service)(workhours unemployment
+marriage Dependency_ratio Civil_Service income) ,nomiss
+hireg birth (workhours)(workhours unemployment) (workhours unemployment
+marriage) (workhours unemployment marriage Dependency_ratio)(workhours
+unemployment marriage Dependency_ratio Civil_Service)(workhours unemployment
+marriage Dependency_ratio Civil_Service income)
+hireg birth (workhours)(unemployment) (marriage)
+(Dependency_ratio)(Civil_Service)(income) ,nomiss
+hireg birth (workhours)(unemployment) (marriage)
+(Dependency_ratio)(Civil_Service)(income)
+hireg birth (workhours)
+(Dependency_ratio)(marriage_lag1)(unemployment)(ddragon_year)(income)(Civil_S
+ervice),nomiss
+hireg birth (Dependency_ratio)(marriage_lag1)(unemployment)(workhours)
+(ddragon_year)(income)(Civil_Service),nomiss
+hireg birth (workhours)(unemployment) (marriage)
+(Dependency_ratio)(Civil_Service)(income) ,nomiss
+hireg birth (workhours)
+(marriage)(unemployment)(Dependency_ratio)(Civil_Service)(income) ,nomiss
