@@ -1,0 +1,8 @@
+Yit = Σβkxkit + αi
++ uit 。
+k=1.......5 ; i=1.......22 ; t=1.......19
+αi: intercept for every city(i) in Taiwan
+Yit: dependent variable ; i: every city in Taiwan ; t: time(year)。
+xkit: independent variable(IV) ; k代表各個解釋變數
+βk: 解釋變數(IV)的係數
+uit: 殘差項
